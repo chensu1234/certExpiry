@@ -36,8 +36,8 @@
 ### Build & Run
 
 ```bash
-git clone https://github.com/YOUR_HANDLE/cert-monitor.git
-cd cert-monitor
+git clone https://github.com/chensu1234/certExpiry.git
+cd certExpiry
 
 # Build
 go build -o bin/cert-monitor ./cmd/cert-monitor
