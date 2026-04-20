@@ -1,0 +1,66 @@
+# cert-monitor default configuration
+#
+# Adjust these values to match your environment.
+# All values here can be overridden via CLI flags.
+
+# ─────────────────────────────────────────────
+# Targets
+# ─────────────────────────────────────────────
+# List of host:port or hostname strings to monitor.
+# Port defaults to 443 if omitted.
+targets:
+  - google.com
+  - github.com
+  - cloudflare.com
+
+# ─────────────────────────────────────────────
+# Scanning
+# ─────────────────────────────────────────────
+# How often to re-scan in daemon mode.
+check_interval: 1h
+
+# Connection timeout per host.
+timeout: 10s
+
+# ─────────────────────────────────────────────
+# Alerting
+# ─────────────────────────────────────────────
+# Warn when a certificate expires within this many days.
+alert_days_threshold: 30
+
+# Local HTTP port for the built-in status/health endpoint.
+# Set to 0 to disable the status server.
+alert_port: 8765
+
+# Optional: POST JSON alerts to this HTTP endpoint.
+# Uncomment and fill in your webhook URL.
+# alert_webhook: https://your-webhook-endpoint.com/alerts
+
+# Extra HTTP headers to include in webhook POST requests.
+# alert_webhook_headers:
+#   Authorization: "Bearer YOUR_TOKEN_HERE"
+#   X-Custom-Header: "cert-monitor"
+
+# ─────────────────────────────────────────────
+# Output & Persistence
+# ─────────────────────────────────────────────
+# Set to true for machine-readable JSON output.
+json_output: false
+
+# Path to the log file (empty = log to stdout only).
+# log_path: ./log/cert-monitor.log
+
+# Directory where scan history JSON files are saved.
+store_path: ./.cert-store
+
+# Downgrade CRITICAL to WARNING (exit code stays 0).
+warn_only: false
+
+# ─────────────────────────────────────────────
+# Daemon mode
+# ─────────────────────────────────────────────
+# Run as a long-lived background process.
+daemon_mode: false
+
+# Skip TLS certificate chain validation (NOT recommended for production).
+# insecure_skip_verify: false

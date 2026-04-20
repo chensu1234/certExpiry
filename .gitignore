@@ -1,0 +1,13 @@
+# Binaries
+bin/
+*.exe
+
+# Certificate store (runtime data)
+.cert-store/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
